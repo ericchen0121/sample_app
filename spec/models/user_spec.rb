@@ -76,6 +76,16 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe "when email address is mixed case" do
+  	let(:mixed_case_address) { "wAteRFoo@caboOze.cOM" }
+
+  	it "should downcase email upon saving" do
+  		@user.email = mixed_case_address
+  		@user.save
+  		@user.reload.email.should == mixed_case_address.downcase
+  	end
+  end
+
   describe "when password is not present" do
   	before { @user.password = @user.password_confirmation = " " }
   	it { should_not be_valid }
