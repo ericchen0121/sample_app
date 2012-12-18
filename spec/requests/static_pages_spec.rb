@@ -24,7 +24,7 @@ describe "Static pages" do
 
     it { should have_selector('h1',    text: 'About') }
     it { should have_selector('title', text: full_title('About Us')) }
-  end
+  end 
 
   describe "Contact page" do
     before { visit contact_path }
